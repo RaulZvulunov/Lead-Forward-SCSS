@@ -1,0 +1,138 @@
+$fontcolor: white;
+$othercolor: #d31c76;
+
+@mixin container ($width, $margin){
+    width: $width;
+    margin: $margin;
+}
+
+@mixin content ($width, $margin, $textalign){
+    width: $width;
+    margin: $margin;
+    text-align: $textalign;
+}
+
+@mixin img ($height){
+    height: $height;
+    width: 100vw;
+}
+
+// Mobile First
+
+body{
+    font-family: 'Heebo', sans-serif;
+    color: $fontcolor;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img{
+    @include img(200px)
+}
+
+.container{
+    @include container (80vw, 0% 10% 0% 0%);
+    background: #272727e3;
+    position: absolute;
+    top: 80px;
+}
+
+.content{
+    @include content (80%, 20px 10% 55px 10%, center);
+
+    h1{
+        font-size: 26px;
+        margin:40px 0px 15px 0px;
+    }
+
+    p{
+        margin-bottom: 30px;
+    }
+
+    label{
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    input{
+        width: 100%;
+        border: 1.5px solid $othercolor;
+        height: 30px;
+        margin-bottom: 15px;
+    }
+
+    button{
+        width: 80px;
+        height: 35px;
+        color: $fontcolor;
+        background: $othercolor;
+        font-weight: 600;
+        border: none;
+    }
+
+}
+
+/* Media Query for Tablets */
+
+@media screen and (min-width: 481px) and (max-width:768px){
+
+    img{
+        @include img(270px)
+    }
+
+    .container{
+        @include container (70vw, 0% 15% 0% 0%);
+        background: #272727e3;
+        position: absolute;
+        top: 110px;
+    }
+
+    h1{
+        font-size: 30px;
+    }
+}
+
+/* Media Query for laptop screens and bigger */
+
+@media screen and (min-width: 769px){
+
+    img{
+        @include img(380px)
+    }
+
+    .container{
+        @include container (390px, 0% 15% 0% 0%);
+        background: #272727e3;
+        position: absolute;
+        top: 125px;
+    }
+
+    .content{
+        @include content (80%, 40px 10% 70px 10%, unset);
+
+        button{
+            width: 100px;
+            height: 40px;
+            color: $fontcolor;
+            background: $othercolor;
+            font-weight: 600;
+            border: none;
+        }
+
+        input{
+            height: 35px;
+        }
+    }
+}
+
